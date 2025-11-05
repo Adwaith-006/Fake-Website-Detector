@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image:url('https://media.istockphoto.com/id/1371563640/photo/cyber-security-digital-padlock-icon-cyber-security-technology-network-and-data-protection.jpg?b=1&s=170667a&w=0&k=20&c=mXlMoAPiWd5qHRb5Nan9XAERnsNT8fuhgbUR4CZVKXk=');
+      background-size:cover; 
+      background-position:center; 
+      background-repeat:no-repeat;
+    }
+
+    .login-wrapper {
+      display: flex;
+      background: #fff;
+      width: 880px;
+      border-radius: 18px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .left-side {
+      flex: 1;
+      background: #fdfdfd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .left-side img {
+      width: 400px;
+      height: 350px;
+      object-fit: cover;
+    }
+
+    .right-side {
+      flex: 1;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #ffffff;
+    }
+
+    .right-side h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #333;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .input-box {
+      position: relative;
+      margin-bottom: 22px;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .input-box input:focus {
+      border-color: #6c63ff;
+      box-shadow: 0 0 6px rgba(108, 99, 255, 0.4);
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .options label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #6c63ff, #533483);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #5a54f2, #3c2c7c);
+      transform: scale(1.03);
+    }
+
+    .bottom-text {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .bottom-text a {
+      color: #6c63ff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .message {
+      text-align: center;
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .success { color: green; }
+
+    @media (max-width: 768px) {
+      .login-wrapper { flex-direction: column; width: 95%; }
+      .left-side { padding: 25px; }
+      .right-side { padding: 40px 25px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-wrapper">
+    <div class="left-side">
+      <img src="https://media.istockphoto.com/id/1407863764/photo/cybersecurity-privacy-protection-concept-information-security-and-encryption-secure-access-to.jpg?s=612x612&w=0&k=20&c=782hsqTzdnB6LnNnqkZExurujL96dq7HV0CfrwRlUaw=" alt="Login Illustration">
+    </div>
+
+    <div class="right-side">
+      <h2>Sign in</h2>
+
+      <div class="input-box">
+        <input type="text" id="username" placeholder="Email">
+      </div>
+
+      <div class="input-box">
+        <input type="password" id="newPassword" placeholder="New Password">
+      </div>
+      
+      <div class="input-box">
+        <input type="password" id="confirmPassword" placeholder="Confirm Password">
+      </div>
+
+      <div class="options">
+        <label><input type="checkbox"> Remember me</label>
+        <a href="#" style="text-decoration:none; color:#6c63ff;">Forgot Password?</a>
+      </div>
+
+      <button class="btn">Log in</button>
+      <p class="message" id="message"></p>
+
+      <div class="bottom-text">
+        Create an account? <a href="#">Sign up</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="firebase-auth.js"></script>
+
+</body>
+</html>

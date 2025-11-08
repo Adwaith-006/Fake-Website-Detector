@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>security Check</title>
+</head>
+<style>
+  body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+header {
+      background: #007bff;
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 16px;
+    }
+    
+    section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 350px;
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #343a40;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+<body>
+     <header>
+    <div class="logo">Fakebuster</div>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+    </nav>
+  </header>
+    <section>
+    <div class="container">
+      <h2>🔒 HTTPS Security Check</h2>
+      <input type="text" id="urlcheck" placeholder="Enter URL (e.g., example.com)">
+      <button onclick="checkSSL()">Check Security</button>
+      <div id="result" class="result"></div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Fakebuster | Domain Age Verification
+  </footer>
+
+  <script>
+    async function checkSSL() {
+      const input = document.getElementById('urlcheck');
+      const resultDiv = document.getElementById('result');
+      let url = input.value.trim();
+
+      if (!url) {
+        resultDiv.textContent = "⚠️ Please enter a website URL.";
+        resultDiv.style.color = "orange";
+        return;
+      }
+
+      // Add https:// if user didn’t type it
+      if (!/^https?:\/\//i.test(url)) {
+        url = "https://" + url;
+      }
+
+      resultDiv.textContent = "⏳ Checking SSL certificate...";
+      resultDiv.style.color = "#555";
+
+      try {
+        // Attempt a HEAD request
+        await fetch(url, { method: "HEAD", mode: "no-cors" });
+        resultDiv.textContent = "✅ The website has a valid SSL certificate.";
+        resultDiv.style.color = "green";
+      } catch (error) {
+        resultDiv.textContent = "❌ The website does not have a valid SSL certificate or is unreachable via HTTPS.";
+        resultDiv.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>

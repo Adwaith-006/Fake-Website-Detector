@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domain Age Verification - Fakebuster</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #007bff;
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 60px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: bold;
+      display: none;
+    }
+    .safe {
+      background: #e0f9e0;
+      color: #2e7d32;
+    }
+    .danger {
+      background: #fde0e0;
+      color: #c62828;
+    }
+    footer {
+      background: #f1f1f1;
+      text-align: center;
+      padding: 12px;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Fakebuster</div>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>📊 Domain Age Verification</h2>
+    <input type="text" id="domainInput" placeholder="Enter domain (e.g., example.com)">
+    <button onclick="checkDomainAge()">Check Age</button>
+    <div id="result" class="result"></div>
+  </div>
+
+  <footer>
+    © 2025 Fakebuster | Domain Age Verification
+  </footer>
+
+  <script>
+    function checkDomainAge() {
+      const domain = document.getElementById("domainInput").value;
+      const resultBox = document.getElementById("result");
+
+      if (!domain) {
+        resultBox.style.display = "block";
+        resultBox.className = "result danger";
+        resultBox.innerHTML = "⚠️ Please enter a domain!";
+        return;
+      }
+
+      // Fake calculation for demo
+      const years = Math.floor(Math.random() * 15) + 1; // 1–15 years
+      resultBox.style.display = "block";
+
+      if (years > 3) {
+        resultBox.className = "result safe";
+        resultBox.innerHTML = `✅ Domain "${domain}" is ${years} years old. Looks trustworthy!`;
+      } else {
+        resultBox.className = "result danger";
+        resultBox.innerHTML = `🚨 Domain "${domain}" is only ${years} year(s) old. Be cautious!`;
+      }
+    }
+  </script>
+</body>
+</html>
